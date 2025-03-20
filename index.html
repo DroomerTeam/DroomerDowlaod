@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Droomer</title>
+    <style>
+        :root {
+            --primary: #5b92ff;
+            --secondary: #a780ff;
+            --background: #0a0a0a;
+            --text: #ffffff;
+            --gradient: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('https://i.imgur.com/0a7Ng87.png') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        .download-container {
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+            perspective: 1000px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .download-title, .download-description, .download-image {
+            font-size: 48px;
+            font-weight: bold;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+            transform-style: preserve-3d;
+            transition: transform 0.7s ease-out;
+        }
+
+        .download-description {
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--text);
+            margin-top: 10px;
+        }
+
+        .download-title:hover, .download-description:hover, .download-image:hover {
+            transform: rotateX(15deg) rotateY(15deg) translateZ(10px);
+            text-shadow: 0 5px 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-size: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+        }
+
+        .download-btn:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .loading-bar {
+            width: 70%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            position: relative;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .loading-bar::before {
+            content: '';
+            position: absolute;
+            width: 30%;
+            height: 100%;
+            background: var(--gradient);
+            animation: loading 1.5s infinite linear;
+        }
+
+        @keyframes loading {
+            from { left: -30%; }
+            to { left: 100%; }
+        }
+
+        .loading-bar:hover {
+            background: var(--gradient);
+        }
+
+        .download-image {
+            width: 200px;
+            margin-top: 20px;
+            transition: transform 0.7s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="download-container">
+        <h1 class="download-title">Download Droomer Now</h1>
+        <p class="download-description">Experience next-level execution and bypass technology.</p>
+        <a href="https://www.mediafire.com/file/n03qalfvrknvx10/Droomer.zip/file" class="download-btn">⬇ Download</a>
+        <div class="loading-bar" id="loadingBar"></div>
+        <img src="https://i.imgur.com/y7U7J0m.png" class="download-image">
+    </div>
+</body>
+</html>
